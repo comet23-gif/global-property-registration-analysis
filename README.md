@@ -13,10 +13,25 @@ These are associations, not evidence of causation. The low linear-model R² and 
 
 ## Explore the analysis
 
-Open [the notebook](Demetrius_Rogers_Global_Property_Registration_Time.ipynb) on GitHub to view the saved analysis, charts, model diagnostics, and conclusions. The workflow covers data filtering and reshaping, exploratory visualization, correlation, OLS regression, variance inflation factors, heteroskedasticity testing, ensemble model comparison, feature importance, and partial dependence.
+Open [the notebook](notebooks/property_analysis.ipynb) on GitHub to view the saved analysis, charts, model diagnostics, and conclusions. The workflow covers data filtering and reshaping, exploratory visualization, correlation, OLS regression, variance inflation factors, heteroskedasticity testing, ensemble model comparison, feature importance, and partial dependence.
 
 ## Data and reproducibility
 
 The notebook uses a file named `worlddata.csv`, with `CountryName`, `CountryCode`, `Year`, `IndicatorName`, and `Value` columns. The source file is not included in this repository, and its original download location and license are not documented in the notebook. The notebook reads it from a personal Google Drive path and writes a cleaned file to Drive; those paths must be changed to run it elsewhere. The saved outputs can still be inspected without the dataset.
 
 The notebook was written for Google Colab. It imports pandas, NumPy, matplotlib, seaborn, scikit-learn, statsmodels, dmba, and SHAP; it also installs LIME. To reproduce the analysis, supply the original dataset, update the Drive-specific paths, and install these dependencies in a compatible Python environment. Package versions were not recorded, so results may vary across environments.
+
+
+## Project structure
+
+- `notebooks/property_analysis.ipynb` — full analysis and saved outputs.
+- `src/modeling.py` — script for preparing the data and comparing the three ensemble models.
+- `results/model_comparison.png` — test-set RMSE values from the saved notebook output.
+- `requirements.txt` — Python dependencies (versions are not pinned).
+
+To run the model comparison after providing the dataset:
+
+```bash
+pip install -r requirements.txt
+python src/modeling.py path/to/worlddata.csv
+```
